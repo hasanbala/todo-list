@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
     <div class="container">
         <div class="card-header">The To-Do List</div>
         <div class="card-body">
@@ -32,8 +31,8 @@
                 </form>
             </div>
 
-            <!-- <div></div> -->
             <hr style="width : 100%; ">
+
             <div class="card-footer">
                 <div id="tasks-title">To-Do's</div>
                 <div class="form-row">
@@ -41,21 +40,25 @@
                         <input type="text" name="filter" id="filter" placeholder="Search for To-Do Element">
                     </div>
                 </div>
+                <ul id="list-group"></ul>
+                <button id="clear-todos" class="clear-todos-all">Clear all</button>
+            </div>
+        </div>
 
-                <ul id="list-group">
-
-                </ul>
-                <!-- <span onclick="newElement()" class="addBtn">Add</span> -->
-                <button id="clear-todos">Clear all</button>
+        <div id="clearList" class="clear-modal animate">
+            <div class="cleardiv">
+                <div class="clear-header">
+                    <h2>Are you sure you want deleted all the list?</h2>
+                    <button class="ques-but1">Yes</button>
+                    <button class="ques-but2">No</button>
+                </div>
             </div>
         </div>
     </div>
 
     <script src="views/ui.js"></script>
     <script src="views/storage.js"></script>
-    <script src="views/todo.js"></script>
     <script src="views/project.js"></script>
-
 </body>
 
 </html>
