@@ -1,4 +1,3 @@
-//tüm elementleri seçtik
 const form = document.querySelector("#todo-form");
 const todoInput = document.querySelector("#todo");
 const todoList = document.querySelector("#list-group");
@@ -8,17 +7,16 @@ const filter = document.querySelector("#filter");
 const clearButton = document.querySelector("#clear-todos");
 const alert = document.createElement("div");
 
-eventListener();
+const ui = new UI();
 
-// big bang; her şey burada başlıyor .00
-function eventListener() {
+(function eventListener() {
   form.addEventListener("submit", addTodo);
   document.addEventListener("DOMContentLoaded", loadAllTodosToUI);
   secondCardBody.addEventListener("click", deleteTodo);
   clearButton.addEventListener("click", clearAllTodos);
   filter.addEventListener("keyup", filterTodos);
   todoList.addEventListener("click", checked);
-}
+})();
 
 // tüm todoları arayüzden kaldırma işlemi
 function clearAllTodos() {
@@ -88,19 +86,14 @@ function loadAllTodosToUI() {
 //bir değer girip girmediğimiz kontrol etme işlevi, bu değeri locale ve UI ye atama işlevi .10
 function addTodo(e) {
   const newTodo = todoInput.value.trim();
-  // console.log(newTodo);
-  let todos = getTodosFromStorage();
+  const todos = getTodosFromStorage();
   let temporary;
 
-  todos.forEach(function (todo) {
-    if (todo === newTodo) {
-      temporary = todo;
-    }
-  });
+  todos.forEach((todo) => (todo == newTodo ? (temporary = todo) : null));
 
-  if (newTodo === "") {
+  if (newTodo == "") {
     alertWarning("lütfen bir To-Do giriniz !!!");
-  } else if (newTodo === temporary) {
+  } else if (newTodo == temporary) {
     alertAlready("Girdiğiniz değer zaten mevcuttur");
     todoInput.value = "";
   } else {
